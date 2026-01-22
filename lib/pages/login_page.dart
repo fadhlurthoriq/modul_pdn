@@ -53,6 +53,8 @@ class LoginPage extends StatelessWidget {
               controller: _pwControlller,
             ),
 
+            const SizedBox(height: 30),
+
             Tombol(
               text: "Login", 
               onTap: login,
