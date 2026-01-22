@@ -3,12 +3,13 @@ import 'package:project_chat/components/id.textfield.dart';
 import 'package:project_chat/components/tombol/tombol.dart';
 
 class RegisterPage extends StatelessWidget {
-  RegisterPage({super.key});
+  RegisterPage({super.key, required this.onTap});
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _pwControlller = TextEditingController();
   final TextEditingController _confirmpwControlller = TextEditingController();
   get regis => null;
+  final void Function()? onTap;
 
   void register(){}
 
@@ -76,11 +77,14 @@ class RegisterPage extends StatelessWidget {
                 style: TextStyle(color: Theme.of(context).colorScheme.primary),
                 ),
 
-                Text(" Silahkan Login",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Theme.of(context).colorScheme.primary,
-                ),)
+                GestureDetector(
+                  onTap: onTap,
+                  child: Text(" Silahkan Login",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),),
+                )
               ],
             )
 

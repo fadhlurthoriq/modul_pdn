@@ -3,7 +3,7 @@ import 'package:project_chat/components/id.textfield.dart';
 import 'package:project_chat/components/tombol/tombol.dart';
 
 class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
+  LoginPage({super.key, required this.onTap});
 
   final TextEditingController _emailController =
       TextEditingController();
@@ -12,6 +12,8 @@ class LoginPage extends StatelessWidget {
       TextEditingController();
       
         get login => null;
+        
+        final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +61,26 @@ class LoginPage extends StatelessWidget {
               text: "Login", 
               onTap: login,
             ),
+
+            const SizedBox(height: 15),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Belum memiliki akun?",
+                style: TextStyle(color: Theme.of(context).colorScheme.primary),
+                ),
+
+                GestureDetector(
+                  onTap: onTap,
+                  child: Text(" Silahkan mendaftar",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),),
+                )
+              ],
+            )
           ],
         ),
       ),
