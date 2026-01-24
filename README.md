@@ -24,7 +24,7 @@ Aplikasi Flutter sederhana yang menerapkan fitur **Login dan Register menggunaka
 ---
 
 ## Struktur Project
-```
+```text
 lib/
 ├── auth/
 │   └── login_or_register.dart
@@ -104,7 +104,7 @@ flutter run -d <device_id>
 ---
 
 ## Author
-```
+```text
 Nama: M. Fadhlur Rahman Thoriq
 Kelas: 11 PPLG 2
 Project: Flutter with firebase auth
