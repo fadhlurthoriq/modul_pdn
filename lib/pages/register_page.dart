@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_chat/auth/auth_service.dart';
 import 'package:project_chat/components/id.textfield.dart';
 import 'package:project_chat/components/tombol/tombol.dart';
 
@@ -8,10 +9,36 @@ class RegisterPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _pwControlller = TextEditingController();
   final TextEditingController _confirmpwControlller = TextEditingController();
-  get regis => null;
+  // get regis => null;
   final void Function()? onTap;
 
-  void register(){}
+  void register(BuildContext context){
+    final _auth = AuthService();
+
+    if(_pwControlller.text == _confirmpwControlller.text){
+      try {
+        _auth.signUpWithEmailPassword(
+          _emailController.text, 
+          _pwControlller.text);
+      } catch (e) {
+        showDialog(
+          context: context, 
+          builder: (context) => AlertDialog(
+            title: Text(e.toString()),
+            
+          ),
+        );
+      }
+    }
+    else{
+      showDialog(
+        context: context, 
+        builder: (context) => AlertDialog(
+          title: Text("Password tidak sama"),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +92,7 @@ class RegisterPage extends StatelessWidget {
 
             Tombol(
               text: "Register", 
-              onTap: regis,
+              onTap: () => register(context),
             ),
 
             const SizedBox(height: 20),
