@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_chat/auth/chat_service.dart';
 import 'package:project_chat/auth/auth_service.dart';
+import 'package:project_chat/components/chat_bubble.dart';
 import 'package:project_chat/components/id.textfield.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -76,7 +77,10 @@ class ChatPage extends StatelessWidget{
       child: Column(
         crossAxisAlignment: isCurrentUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
       children: [
-        Text(data["message"] ?? "",)
+        ChatBubble(
+          message: data['message'] ?? "", 
+          isCurrentUser: isCurrentUser
+        )
       ],
       ),
     );
